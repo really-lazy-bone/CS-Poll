@@ -34,7 +34,32 @@ public class Admin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		ArrayList<Poll> polls = new ArrayList<Poll>();
+		Connection c;
+		try {
+			c = DriverManager.getConnection(Constants.DATABASE_URL, Constants.MYSQL_USERNAME, Constants.MYSQL_PASSWORD);
+			String requestSql = ("select * from poll");
+			PreparedStatement pstmt = c.prepareStatement(requestSql);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int pollId = rs.getInt("poll_id");
+				int totalCount = rs.getInt("total_count");
+				String description = rs.getString("description");
+				Poll poll = new Poll(pollId, description, totalCount);
+				polls.add(poll);
+			}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("polls", polls);
+		request.getRequestDispatcher("/WEB-INF/admin.jsp").forward(
+				request, response);
+	
+	
 	}
 
 	/**

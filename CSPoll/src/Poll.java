@@ -7,6 +7,15 @@ public class Poll {
 	private ArrayList<Option> options;
 	private boolean allowMultipleAnswer;
 	private ArrayList<String> votedIps;
+	private int totalVote;
+
+	
+	
+	public Poll(int id, String description, int totalVote) {
+		this.id = id;
+		this.description = description;
+		this.totalVote = totalVote;
+	}
 
 	public String getDescription() {
 		return description;
@@ -48,6 +57,14 @@ public class Poll {
 
 	public void setOptions(ArrayList<Option> options) {
 		this.options = options;
+	}
+
+	public int getTotalVote() {
+		return totalVote;
+	}
+
+	public void setTotalVote(int totalVote) {
+		this.totalVote = totalVote;
 	}
 
 }

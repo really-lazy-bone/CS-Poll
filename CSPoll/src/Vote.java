@@ -93,8 +93,9 @@ public class Vote extends HttpServlet {
 			}
 			if(votedIps.contains(clientIP))
 			{
-				//Voted!!!!!!! redirect to error
-				
+				//Voted!!!!!!! redirect to error page
+				response.sendRedirect("./error.html");
+
 			
 			}
 			else{
