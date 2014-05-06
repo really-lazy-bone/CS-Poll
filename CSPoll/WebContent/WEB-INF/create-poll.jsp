@@ -30,7 +30,7 @@
 </head>
 <body>
 
-	<form action="">
+	<form action="createPoll" method="POST">
 
 		<div class="ui page grid three column">
 			<h1 class="ui icon blue center aligned header">
@@ -51,7 +51,7 @@
 						<div class="item">
 							<div class="fluid field">
 								<div class="ui left labeled icon input">
-									<input type="text" placeholder="Vote Option 1">
+									<input type="text" name="options[]" placeholder="Vote Option 1">
 									<i class="tag icon"></i>
 								</div>
 							</div>
@@ -72,9 +72,9 @@
 							<i class="icon add"></i> Add Vote Option
 						</div>
 						<div class="or"></div>
-						<div id="done" class="ui blue labeled submit icon button">
+						<input type="submit" id="done" class="ui blue labeled submit icon button">
 							<i class="icon edit"></i> Done
-						</div>
+						</input>
 					</div>
 				</div>
 			</div>
@@ -93,7 +93,7 @@
 				.append("<div class='item'>"
 						+ "<div class='fluid field'>"
 							+ "<div class='ui left labeled icon input'>"
-								+ "<input type='text' placeholder='Vote Option " + count + " '>"
+								+ "<input type='text' name='options[]' placeholder='Vote Option " + count + " '>"
 								+ "<i class='tag icon'></i>"
 							+ "</div>"
 						+ "</div>"

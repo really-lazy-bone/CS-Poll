@@ -53,7 +53,7 @@ public class createPoll extends HttpServlet {
 		try {
 			String url = "jdbc:mysql://localhost/cspoll";
 			String username = "root";
-			String password = "password";
+			String password = "abcd";
 
 			Connection c = DriverManager.getConnection(url, username, password);
 
