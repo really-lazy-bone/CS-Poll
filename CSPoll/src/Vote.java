@@ -123,7 +123,7 @@ public class Vote extends HttpServlet {
 				pstmt.executeUpdate();
 				
 				//Redirect to success
-				response.sendRedirect("./ViewResult?id="+pollId);
+				response.sendRedirect("./vote-success.jsp");
 
 			}
 			
