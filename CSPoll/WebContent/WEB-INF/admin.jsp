@@ -74,7 +74,7 @@ h1 {
 								</a>
 							</td>
 							<td>
-								<form action="Admin" method="DELETE">
+								<form action="Admin" method="POST">
 									<input type="hidden" name="id" value="${poll.id}">
 									<input type="submit" class="ui blue icon button" value="Reset" />
 								</form>

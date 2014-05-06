@@ -62,19 +62,10 @@ public class Admin extends HttpServlet {
 	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
+	
 	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
 		// This resets the vote counts of the options of a poll
 		int pollIdToReset = Integer.parseInt(req.getParameter("id"));
 
@@ -85,6 +76,15 @@ public class Admin extends HttpServlet {
 			PreparedStatement pstmt = c.prepareStatement(setNewPageCount);
 			pstmt.setInt(1, pollIdToReset);
 			pstmt.executeUpdate();
+			
+			
+			String deleteIps = "delete from poll_ip where poll_id =?";
+			PreparedStatement pstmt2 = c.prepareStatement(deleteIps);
+			pstmt2.setInt(1, pollIdToReset);
+			pstmt2.executeUpdate();
+			
+			
+			resp.sendRedirect("./Admin");
 
 			c.close();
 		} catch (SQLException e) {
