@@ -1,5 +1,6 @@
 CREATE TABLE poll (
          poll_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		 total_count INT DEFAULT 0,
          description VARCHAR(255),
 		 allow_multiple_answer boolean 
        );

@@ -98,8 +98,13 @@ public class Vote extends HttpServlet {
 			
 			}
 			else{
-				//Not voted, update vote counts in option, add ip to poll_ip, redirect to success page
+				//Not voted, update vote counts in option and poll, add ip to poll_ip, redirect to success page
 
+				String setNewTotalCount = "update poll set total_count=total_count +1 where poll_id =?";
+				PreparedStatement pstmt3 = c.prepareStatement(setNewTotalCount);
+				pstmt3.setInt(1, pollId);
+				pstmt3.executeUpdate();	
+				
 				for (int i = 0; i < selectedOptionIds.length; i++) {
 					String setNewPageCount = "update poll_option set vote_count=vote_count +1 where id =?";
 					PreparedStatement pstmt = c.prepareStatement(setNewPageCount);
@@ -113,6 +118,7 @@ public class Vote extends HttpServlet {
 				PreparedStatement pstmt = c.prepareStatement(addIp);
 				pstmt.setInt(1, pollId);
 				pstmt.setString(2, clientIP);
+				
 				pstmt.executeUpdate();
 				
 				//Redirect to success

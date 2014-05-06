@@ -58,7 +58,7 @@ public class ViewResult extends HttpServlet {
 			ResultSet rs1 = pstmt2.executeQuery();
 
 			while (rs1.next()) {
-				Option optionToShow = new Option(Integer.parseInt(rs1.getString("id")), rs1.getString("option_string"), Integer.parseInt(rs1.getString("option_count")));
+				Option optionToShow = new Option(Integer.parseInt(rs1.getString("id")), rs1.getString("option_string"), Integer.parseInt(rs1.getString("vote_count")));
 				options.add(optionToShow);
 			}
 			
