@@ -20,11 +20,40 @@
 		font-size: 59px;
 		line-height: 70px;
 	}
+
+	.float.left {
+		float: left;
+	}
 	</style>
 </head>
 <body>
 
+	<div class="ui styled sidebar">
+		<h3 class="ui header">Login Here</h3>
+		<div class="ui form">
+			<div class="field">
+				<label>Username</label>
+				<div class="ui icon input">
+					<i class="user icon"></i>
+					<input type="text" placeholder="Username">
+				</div>
+			</div>
+			<div class="field">
+				<label>Password</label>
+				<div class="ui icon input">
+					<i class="key icon"></i>
+					<input type="text" placeholder="Password">
+				</div>
+			</div>
+			<div class="ui blue fluid button"><i class="ui icon unlock"></i> Login</div>
+		</div>
+	</div>
+
 	<div class="ui page grid three column">
+		<div id="login" class="ui blue icon button float left">
+			<i class="key icon"></i>
+		</div>
+
 		<h1 class="ui icon blue center aligned header">
 			<i class="help icon"></i> CS Poll
 			<div class="sub header">A quick poll software</div>
@@ -74,5 +103,16 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/javascript/semantic.js"></script>	
+	<script>
+		$('.ui.sidebar')
+			.sidebar()
+		;
+
+		$('#login').click(function() {
+			$('.ui.sidebar')
+			  .sidebar('toggle')
+			;
+		});
+	</script>
 </body>
 </html>
