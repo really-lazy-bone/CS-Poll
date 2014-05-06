@@ -10,3 +10,8 @@ CREATE TABLE poll_option(
 		 vote_count INT DEFAULT 0
 
 );
+CREATE TABLE poll_ip(
+		poll_id INT,
+		ip VARCHAR(39)
+
+);
