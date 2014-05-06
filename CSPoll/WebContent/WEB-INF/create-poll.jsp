@@ -51,7 +51,7 @@
 						<div class="item">
 							<div class="fluid field">
 								<div class="ui left labeled icon input">
-									<input type="text" name="options[]" placeholder="Vote Option 1">
+									<input type="text" name="options" placeholder="Vote Option 1">
 									<i class="tag icon"></i>
 								</div>
 							</div>
@@ -93,7 +93,7 @@
 				.append("<div class='item'>"
 						+ "<div class='fluid field'>"
 							+ "<div class='ui left labeled icon input'>"
-								+ "<input type='text' name='options[]' placeholder='Vote Option " + count + " '>"
+								+ "<input type='text' name='options' placeholder='Vote Option " + count + " '>"
 								+ "<i class='tag icon'></i>"
 							+ "</div>"
 						+ "</div>"
