@@ -116,7 +116,8 @@ public class Vote extends HttpServlet {
 				pstmt.executeUpdate();
 				
 				//Redirect to success
-				
+				response.sendRedirect("./ViewResult?id="+pollId);
+
 			}
 			
 			
@@ -126,7 +127,6 @@ public class Vote extends HttpServlet {
 			throw new ServletException(e);
 		}
 		
-		//redirect to result page
 	
 	
 	}
