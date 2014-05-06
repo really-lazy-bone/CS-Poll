@@ -36,7 +36,6 @@ public class createPoll extends HttpServlet {
 
 		request.getRequestDispatcher("/WEB-INF/create-poll.jsp").forward(
 				request, response);
-
 	}
 
 	/**
@@ -51,11 +50,7 @@ public class createPoll extends HttpServlet {
 		String[] options = request.getParameterValues("options");
 		int auto_id = 0;
 		try {
-			String url = "jdbc:mysql://localhost/cspoll";
-			String username = "root";
-			String password = "abcd";
-
-			Connection c = DriverManager.getConnection(url, username, password);
+			Connection c = DriverManager.getConnection(Constants.DATABASE_URL, Constants.MYSQL_USERNAME, Constants.MYSQL_PASSWORD);
 
 			String sql = "insert into poll (description, allow_multiple_answer) values (?, ?)";
 			PreparedStatement pstmt = c.prepareStatement(sql,
