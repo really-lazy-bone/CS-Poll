@@ -16,19 +16,23 @@
 <link rel="stylesheet"
 	href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
 
-<style>
-body {
-	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-	font-size: 16px;
-	line-height: 25px;
-}
 
-h1 {
-	font-family: 'Arvo', Georgia, Times, serif;
-	font-size: 59px;
-	line-height: 70px;
-}
-</style>
+<style>
+	body {
+		font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+		line-height: 25px;
+	}
+	h1 {
+		font-family: 'Arvo', Georgia, Times, serif;
+		font-size: 59px;
+		line-height: 70px;
+	}
+
+	.float.left {
+		float: left;
+	}
+	</style>
 </head>
 <body>
 
