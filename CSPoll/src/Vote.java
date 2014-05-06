@@ -36,7 +36,7 @@ public class Vote extends HttpServlet {
 		try {
 		
 
-			ArrayList<String> options = new ArrayList<String>(); 
+			ArrayList<Option> options = new ArrayList<Option>(); 
 
 			Connection c = DriverManager.getConnection(Constants.DATABASE_URL, Constants.MYSQL_USERNAME, Constants.MYSQL_PASSWORD);
 			String requestSql = ("select * from poll where poll_id= ?");
@@ -53,7 +53,8 @@ public class Vote extends HttpServlet {
 			pstmt2.setInt(1, Integer.parseInt(request.getParameter("id")));
 			ResultSet rs1 = pstmt2.executeQuery();
 			while (rs1.next()) {
-				options.add(rs1.getString("option_string"));
+				Option optionToAdd = new Option(Integer.parseInt(rs1.getString("id")), rs1.getString("option_string"));
+				options.add(optionToAdd);
 			}
 			request.setAttribute("options", options);
 

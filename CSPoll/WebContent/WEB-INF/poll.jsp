@@ -56,9 +56,9 @@
 
                      <div class="item">
 						<i class="checked checkbox icon"></i>
-						<div class="content">    <c:out value="${option}"></c:out>
+						<div class="content">    <c:out value="${option.optionString}"></c:out>
 						</div>
-					</div>
+					</div> 
     </c:forEach>
 					
 					
