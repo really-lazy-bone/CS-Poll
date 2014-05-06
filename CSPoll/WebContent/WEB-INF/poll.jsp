@@ -1,26 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="height=device-height, width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
-	<title>CS Poll</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="height=device-height, width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<title>CS Poll</title>
 
-	<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css"> 
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
+<link href="http://fonts.googleapis.com/css?family=Arvo"
+	rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
 
-	<style>
-	body {
-		font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-		font-size: 16px;
-		line-height: 25px;
-	}
-	h1 {
-		font-family: 'Arvo', Georgia, Times, serif;
-		font-size: 59px;
-		line-height: 70px;
-	}
-	</style>
+<style>
+body {
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 25px;
+}
+
+h1 {
+	font-family: 'Arvo', Georgia, Times, serif;
+	font-size: 59px;
+	line-height: 70px;
+}
+</style>
 </head>
 <body>
 
@@ -33,36 +41,23 @@
 		<div class="sixteen wide column">
 			<div class="ui piled blue segment">
 				<div class="ui header">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, quos accusantium voluptatibus officia laboriosam labore quibusdam quidem ab ut commodi. Reprehenderit ab sed accusantium nulla harum explicabo odio quo nisi.
+					<c:out value="${description}"></c:out>
 				</div>
 
 				<div class="ui divider"></div>
 
 				<div class="ui list">
-					<div class="item">
+				
+				<c:forEach var="option" items="${options}">
+
+                     <div class="item">
 						<i class="checked checkbox icon"></i>
-						<div class="content">
-							dummy description
+						<div class="content">    <c:out value="${option}"></c:out>
 						</div>
 					</div>
-					<div class="item">
-						<i class="checked checkbox icon"></i>
-						<div class="content">
-							dummy description
-						</div>
-					</div>
-					<div class="item">
-						<i class="checked checkbox icon"></i>
-						<div class="content">
-							dummy description
-						</div>
-					</div>
-					<div class="item">
-						<i class="checked checkbox icon"></i>
-						<div class="content">
-							dummy description
-						</div>
-					</div>
+    </c:forEach>
+					
+					
 				</div>
 
 				<div class="ui fluid blue labeled submit icon button">
@@ -72,7 +67,9 @@
 		</div>
 	</div>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/javascript/semantic.js"></script>	
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script
+		src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/javascript/semantic.js"></script>
 </body>
 </html>
