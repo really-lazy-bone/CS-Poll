@@ -34,21 +34,10 @@ public class createPoll extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		if (request.getSession().getAttribute("user") == null) {
-			response.sendRedirect("./LogIn");
+		request.getRequestDispatcher("/WEB-INF/create-poll.jsp").forward(
+				request, response);
 
-		}
-
-		else {
-
-			request.getRequestDispatcher("/WEB-INF/CreatePoll.jsp").forward(
-					request, response);
-
-		}
-		
 	}
-
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -60,7 +49,7 @@ public class createPoll extends HttpServlet {
 		boolean allowMultipleAnswer = Boolean.valueOf(request
 				.getParameter("allowMultipleAnswer"));
 		String[] options = request.getParameterValues("options");
-		int auto_id=0;
+		int auto_id = 0;
 		try {
 			String url = "jdbc:mysql://localhost/cspoll";
 			String username = "root";
@@ -69,15 +58,16 @@ public class createPoll extends HttpServlet {
 			Connection c = DriverManager.getConnection(url, username, password);
 
 			String sql = "insert into poll (description, allow_multiple_answer) values (?, ?)";
-			PreparedStatement pstmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement pstmt = c.prepareStatement(sql,
+					Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, description);
 			pstmt.setBoolean(2, allowMultipleAnswer);
 			pstmt.executeUpdate();
-			
+
 			ResultSet rs = pstmt.getGeneratedKeys();
-		    rs.next();
-		   auto_id = rs.getInt(1);
-			
+			rs.next();
+			auto_id = rs.getInt(1);
+
 			for (int i = 0; i < options.length; i++) {
 				String optionSql = "insert into poll_option (poll_id, option_string) values (?, ?)";
 				PreparedStatement pstmt2 = c.prepareStatement(optionSql);
@@ -85,13 +75,12 @@ public class createPoll extends HttpServlet {
 				pstmt2.setString(2, options[i]);
 				pstmt2.executeUpdate();
 			}
-			
-			
+
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		}
 
-		response.sendRedirect("./vote?id="+auto_id);
+		response.sendRedirect("./vote?id=" + auto_id);
 	}
 
 }
