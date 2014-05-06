@@ -49,6 +49,7 @@ public class ViewResult extends HttpServlet {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				description = rs.getString("description");
+				request.setAttribute("totalCount", rs.getInt("total_count"));
 				request.setAttribute("description", description);
 			}
 			
