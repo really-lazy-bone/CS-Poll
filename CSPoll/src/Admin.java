@@ -72,6 +72,14 @@ public class Admin extends HttpServlet {
 		try {
 			Connection c = DriverManager.getConnection(Constants.DATABASE_URL,
 					Constants.MYSQL_USERNAME, Constants.MYSQL_PASSWORD);
+			
+			String setNewPollCount = "update poll set total_count=0 where poll_id =?";
+			PreparedStatement pstmt4 = c.prepareStatement(setNewPollCount);
+			pstmt4.setInt(1, pollIdToReset);
+			pstmt4.executeUpdate();
+			
+			
+			
 			String setNewPageCount = "update poll_option set vote_count=0 where id =?";
 			PreparedStatement pstmt = c.prepareStatement(setNewPageCount);
 			pstmt.setInt(1, pollIdToReset);
