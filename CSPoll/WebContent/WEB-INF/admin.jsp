@@ -60,15 +60,24 @@ h1 {
 							<td>${poll.description}</td>
 							<td>${poll.totalVote}</td>
 							<td>
-								<a href="ViewResult?id=${poll.id}"></a>
+								<a href="ViewResult?id=${poll.id}">
+									<span class="ui blue icon button">
+										<i class="ui icon screenshot"></i>
+									</span>
+								</a>
 							</td>
 							<td>
-								<a href="Vote?id=${poll.id}"></a>
+								<a href="Vote?id=${poll.id}">
+									<span class="ui blue icon button">
+										<i class="ui icon thumbs up outline"></i>
+									</span>
+								</a>
 							</td>
 							<td>
-								<div class="ui blue icon button">
-									<i class="icon refresh"></i>
-								</div>
+								<form action="Admin" method="DELETE">
+									<input type="hidden" name="id" value="${poll.id}">
+									<input type="submit" class="ui blue icon button" value="Reset" />
+								</form>
 							</td>
 						</tr>
 					</c:forEach>
