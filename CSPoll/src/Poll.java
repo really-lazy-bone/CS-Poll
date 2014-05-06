@@ -6,6 +6,7 @@ public class Poll {
 	private String description;
 	private ArrayList<Option> options;
 	private boolean allowMultipleAnswer;
+	private ArrayList<String> votedIps;
 
 	public String getDescription() {
 		return description;
@@ -31,6 +32,22 @@ public class Poll {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public ArrayList<String> getVotedIps() {
+		return votedIps;
+	}
+
+	public void setVotedIps(ArrayList<String> votedIps) {
+		this.votedIps = votedIps;
+	}
+
+	public ArrayList<Option> getOptions() {
+		return options;
+	}
+
+	public void setOptions(ArrayList<Option> options) {
+		this.options = options;
 	}
 
 }
