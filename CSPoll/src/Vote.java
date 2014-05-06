@@ -46,6 +46,7 @@ public class Vote extends HttpServlet {
 			while (rs.next()) {
 				String description = rs.getString("description");
 				request.setAttribute("description", description);
+				request.setAttribute("allowMultipleAnswer", rs.getBoolean("allow_multiple_answer"));
 			}
 			
 			String optionSql = ("select * from poll_option where poll_id= ?");
@@ -71,7 +72,11 @@ public class Vote extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	   
+	
+	
+	
 	}
 
 }
