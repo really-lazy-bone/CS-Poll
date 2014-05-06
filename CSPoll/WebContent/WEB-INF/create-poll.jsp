@@ -51,7 +51,7 @@
 						<div class="item">
 							<div class="fluid field">
 								<div class="ui left labeled icon input">
-									<input type="text" name="options" placeholder="Vote Option 1">
+									<input type="text" class="options" name="options" placeholder="Vote Option 1">
 									<i class="tag icon"></i>
 								</div>
 							</div>
@@ -72,9 +72,7 @@
 							<i class="icon add"></i> Add Vote Option
 						</div>
 						<div class="or"></div>
-						<input type="submit" id="done" class="ui blue labeled submit icon button">
-							<i class="icon edit"></i> Done
-						</input>
+						<input type="submit" id="done" class="ui blue labeled submit icon button" value="Done" />
 					</div>
 				</div>
 			</div>
@@ -87,17 +85,29 @@
 	<script>
 		var count = 1;
 
-		$('#add_option').click(function() {
+		var addOption = function() {
 			count ++;
 			$('#options')
 				.append("<div class='item'>"
 						+ "<div class='fluid field'>"
 							+ "<div class='ui left labeled icon input'>"
-								+ "<input type='text' name='options' placeholder='Vote Option " + count + " '>"
+								+ "<input type='text' class='options' name='options' placeholder='Vote Option " + count + " '>"
 								+ "<i class='tag icon'></i>"
 							+ "</div>"
 						+ "</div>"
 					+ "</div>");
+			};
+
+		// Disable the enter key click to submit the event
+		$('form').keypress(function (e) {     
+			var charCode = e.charCode || e.keyCode || e.which;
+			if (charCode  == 13) {
+				return false;
+			}
+		});
+
+		$('#add_option').click(function() {
+			addOption();
 		});
 	</script>
 </body>
