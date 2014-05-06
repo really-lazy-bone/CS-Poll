@@ -18,21 +18,22 @@
 
 
 <style>
-	body {
-		font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-		font-size: 16px;
-		line-height: 25px;
-	}
-	h1 {
-		font-family: 'Arvo', Georgia, Times, serif;
-		font-size: 59px;
-		line-height: 70px;
-	}
+body {
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 25px;
+}
 
-	.float.left {
-		float: left;
-	}
-	</style>
+h1 {
+	font-family: 'Arvo', Georgia, Times, serif;
+	font-size: 59px;
+	line-height: 70px;
+}
+
+.float.left {
+	float: left;
+}
+</style>
 </head>
 <body>
 
@@ -44,29 +45,41 @@
 
 		<div class="sixteen wide column">
 			<div class="ui piled blue segment">
-				<div class="ui header">
-					<c:out value="${description}"></c:out>
-				</div>
+				<form action="Vote" method="post">
+					<div class="ui header">
+						<c:out value="${description}"></c:out>
+					</div>
 
-				<div class="ui divider"></div>
+					<div class="ui divider"></div>
 
-				<div class="ui list">
-				
-				<c:forEach var="option" items="${options}">
+					<div class="ui list">
 
-                     <div class="item">
-						<i class="checked checkbox icon"></i>
-						<div class="content">    <c:out value="${option.optionString}"></c:out>
-						</div>
-					</div> 
-    </c:forEach>
-					
-					
-				</div>
+						<c:forEach var="option" items="${options}">
 
-				<div class="ui fluid blue labeled submit icon button">
-					<i class="icon edit"></i> Vote
-				</div>
+							<div class="item">
+								<c:if test="${allowMultipleAnswer}">
+									<input type="checkbox" class="ui checkbox" name="selectedOptionsIds"
+										value="${option.id}">
+								</c:if>
+								<c:if test="${not allowMultipleAnswer}">
+									<input type="radio" class="ui radio checkbox" name="selectedOptionsIds"
+										value="${option.id}">
+								</c:if>
+								<div class="content">
+									<c:out value="${option.optionString}"></c:out>
+								</div>
+							</div>
+						</c:forEach>
+
+
+					</div>
+
+					<input type="hidden" name="id" value="${id}" />
+
+					<input type="submit"
+						class="ui fluid blue labeled submit icon button" value="Vote" />
+
+				</form>
 			</div>
 		</div>
 	</div>

@@ -81,7 +81,7 @@ public class createPoll extends HttpServlet {
 			throw new ServletException(e);
 		}
 
-		response.sendRedirect("./vote?id=" + auto_id);
+		response.sendRedirect("./Vote?id=" + auto_id);
 	}
 
 }

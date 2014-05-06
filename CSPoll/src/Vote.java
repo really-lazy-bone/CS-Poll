@@ -109,7 +109,7 @@ public class Vote extends HttpServlet {
 				}
 				
 				
-				String addIp = "insert into poll_option (poll_id, ip) values (?,?)";
+				String addIp = "insert into poll_ip (poll_id, ip) values (?,?)";
 				PreparedStatement pstmt = c.prepareStatement(addIp);
 				pstmt.setInt(1, pollId);
 				pstmt.setString(2, clientIP);
