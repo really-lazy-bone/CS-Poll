@@ -126,8 +126,7 @@ public class Vote extends HttpServlet {
 			throw new ServletException(e);
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/poll.jsp").forward(
-				request, response);
+		//redirect to result page
 	
 	
 	}
