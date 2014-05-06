@@ -44,6 +44,12 @@ public class createPoll extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String description = request.getParameter("description");
 		boolean allowMultipleAnswer = Boolean.valueOf(request
 				.getParameter("allowMultipleAnswer"));
