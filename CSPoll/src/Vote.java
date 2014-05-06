@@ -42,6 +42,7 @@ public class Vote extends HttpServlet {
 			String requestSql = ("select * from poll where poll_id= ?");
 			PreparedStatement pstmt = c.prepareStatement(requestSql);
 			pstmt.setInt(1, Integer.parseInt(request.getParameter("id")));
+			request.setAttribute("id", request.getParameter("id"));
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String description = rs.getString("description");
@@ -72,9 +73,61 @@ public class Vote extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		
+		String clientIP = request.getRemoteAddr();
+		String[] selectedOptionIds = request.getParameterValues("selectedOptionsIds");
+		int pollId = Integer.parseInt(request.getParameter("id"));
 	   
-	
+		try {
+			
+          	Connection c = DriverManager.getConnection(Constants.DATABASE_URL, Constants.MYSQL_USERNAME, Constants.MYSQL_PASSWORD);
+			ArrayList<String> votedIps = new ArrayList<String>();
+			String ipSql = ("select * from poll_ip where poll_id= ?");
+			PreparedStatement pstmt2 = c.prepareStatement(ipSql);
+			pstmt2.setInt(1, pollId);
+			ResultSet rs1 = pstmt2.executeQuery();
+			while (rs1.next()) {
+
+			 votedIps.add(rs1.getString("ip"));
+			}
+			if(votedIps.contains(clientIP))
+			{
+				//Voted!!!!!!! redirect to error
+				
+			
+			}
+			else{
+				//Not voted, update vote counts in option, add ip to poll_ip, redirect to success page
+
+				for (int i = 0; i < selectedOptionIds.length; i++) {
+					String setNewPageCount = "update poll_option set vote_count=vote_count +1 where id =?";
+					PreparedStatement pstmt = c.prepareStatement(setNewPageCount);
+					pstmt.setInt(1, Integer.parseInt(selectedOptionIds[i]));
+					pstmt.executeUpdate();				
+					
+				}
+				
+				
+				String addIp = "insert into poll_option (poll_id, ip) values (?,?)";
+				PreparedStatement pstmt = c.prepareStatement(addIp);
+				pstmt.setInt(1, pollId);
+				pstmt.setString(2, clientIP);
+				pstmt.executeUpdate();
+				
+				//Redirect to success
+				
+			}
+			
+			
+
+			c.close();
+		} catch (SQLException e) {
+			throw new ServletException(e);
+		}
+		
+		request.getRequestDispatcher("/WEB-INF/poll.jsp").forward(
+				request, response);
 	
 	
 	}
