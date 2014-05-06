@@ -12,6 +12,11 @@ public class Option {
 		this.id = id;
 		this.optionString = optionString;
 	}
+	public Option(int id, String optionString, int optionCount) {
+		this.id = id;
+		this.optionString = optionString;
+		this.optionCount=optionCount;
+	}
 	public int getId() {
 		return id;
 	}
