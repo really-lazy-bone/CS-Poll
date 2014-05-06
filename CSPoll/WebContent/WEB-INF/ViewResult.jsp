@@ -62,7 +62,7 @@ $(function () {
             }
         },
         title: {
-            text: 'Poll Result ${id}'
+            text: '${description}'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -80,7 +80,7 @@ $(function () {
         },
         series: [{
             type: 'pie',
-            name: 'Browser share',
+            name: 'Total Count ${totalCount}',
             data: [
                 <c:forEach var="option" items="${options}">
                 	['${option.optionString}', ${option.optionCount}],
