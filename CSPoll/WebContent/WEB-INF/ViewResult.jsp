@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -59,7 +62,7 @@ $(function () {
             }
         },
         title: {
-            text: 'Browser market shares at a specific website, 2014'
+            text: 'Poll Result ${id}'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -79,17 +82,9 @@ $(function () {
             type: 'pie',
             name: 'Browser share',
             data: [
-                ['Firefox',   45.0],
-                ['IE',       26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari',    8.5],
-                ['Opera',     6.2],
-                ['Others',   0.7]
+                <c:forEach var="option" items="${options}">
+                	['${option.optionString}', ${option.optionCount}],
+                </c:forEach>
             ]
         }]
     });
