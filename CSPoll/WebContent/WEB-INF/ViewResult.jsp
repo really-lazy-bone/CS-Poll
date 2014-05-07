@@ -83,7 +83,7 @@ $(function () {
             name: 'Percentage',
             data: [
                 <c:forEach var="option" items="${options}">
-                	['${option.optionString}', ${option.optionCount}],
+                	['${option.optionString}<br>Count: ${option.optionCount}', ${option.optionCount}],
                 </c:forEach>
             ]
         }]
