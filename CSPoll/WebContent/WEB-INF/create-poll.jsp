@@ -62,7 +62,7 @@
 
 					<div class="inline field">
 						<div class="ui checkbox">
-							<input type="checkbox" id="allowMultipleAnswer" name="allowMultipleAnswer">
+							<input type="checkbox" id="allowMultipleAnswer" name="allowMultipleAnswer" value="true">
 							<label for="allowMultipleAnswer">Allow Multiple Vote Choices</label>
 						</div>
 					</div>
