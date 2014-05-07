@@ -14,7 +14,7 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans"
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet"
-	href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.css">
+	href="libs/semantic-ui/css/semantic.css">
 
 
 <style>
@@ -55,14 +55,13 @@ h1 {
 					<div class="ui list">
 
 						<c:forEach var="option" items="${options}">
-
 							<div class="item">
 								<c:if test="${allowMultipleAnswer}">
 									<input type="checkbox" class="ui checkbox" name="selectedOptionsIds"
 										value="${option.id}">
 								</c:if>
 								<c:if test="${not allowMultipleAnswer}">
-									<input type="radio" class="ui radio checkbox" name="selectedOptionsIds"
+									<input type="radio" class="ui radio checkbox" required name="selectedOptionsIds"
 										value="${option.id}">
 								</c:if>
 								<div class="content">
@@ -85,8 +84,11 @@ h1 {
 	</div>
 
 	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		src="libs/jquery/jquery-1.11.1.js"></script>
 	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/javascript/semantic.js"></script>
+		src="libs/semantic-ui/javascript/semantic.js"></script>
+	<script>
+		
+	</script>
 </body>
 </html>
