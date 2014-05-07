@@ -80,7 +80,7 @@ public class Admin extends HttpServlet {
 			
 			
 			
-			String setNewPageCount = "update poll_option set vote_count=0 where id =?";
+			String setNewPageCount = "update poll_option set vote_count=0 where poll_id =?";
 			PreparedStatement pstmt = c.prepareStatement(setNewPageCount);
 			pstmt.setInt(1, pollIdToReset);
 			pstmt.executeUpdate();
