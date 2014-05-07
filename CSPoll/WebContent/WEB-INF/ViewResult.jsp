@@ -80,7 +80,7 @@ $(function () {
         },
         series: [{
             type: 'pie',
-            name: 'Poll Result',
+            name: 'Percentage',
             data: [
                 <c:forEach var="option" items="${options}">
                 	['${option.optionString}', ${option.optionCount}],
