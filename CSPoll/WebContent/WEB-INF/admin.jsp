@@ -48,7 +48,7 @@ h1 {
 				<thead>
 					<tr>
 						<th>Description</th>
-						<th>Total Count</th>
+						<th>Number of People Voted</th>
 						<th>Result Link</th>
 						<th>Vote Link</th>
 						<th>Reset Poll</th>
