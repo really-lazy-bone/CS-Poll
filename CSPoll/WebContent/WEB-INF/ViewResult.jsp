@@ -41,6 +41,8 @@
 		</h1>
 
 		<div class="sixteen wide column">
+			<h3 class="ui center aligned header">${description}</h3>
+			<h4 class="ui center aligned header">Number of participants: ${totalCount}</h4>
 			<div id="container" style="height: 400px"></div>
 		</div>
 	</div>
@@ -61,9 +63,7 @@ $(function () {
                 beta: 0
             }
         },
-        title: {
-            text: '${description}'
-        },
+        title: '',
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
         },
@@ -80,7 +80,7 @@ $(function () {
         },
         series: [{
             type: 'pie',
-            name: 'Total Count ${totalCount}',
+            name: 'Poll Result',
             data: [
                 <c:forEach var="option" items="${options}">
                 	['${option.optionString}', ${option.optionCount}],
