@@ -43,6 +43,10 @@ h1 {
 			<div class="sub header">A quick poll software</div>
 		</h1>
 
+		<a href="createPoll" class="ui button fluid blue">
+			Create New Poll
+		</a>
+
 		<div class="sixteen wide column">
 			<table class="ui table segment">
 				<thead>
